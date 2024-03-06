@@ -1,6 +1,12 @@
-import { useState } from "react";
 import listIcon from "../assets/images/icon-list.svg";
 import { useNavigate } from "react-router-dom";
+
+type leftProps = {
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  isError: boolean;
+  setIsError: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 type monthlyUpdatesType = {
   id: number;
@@ -28,9 +34,7 @@ const monthlyUpdates: monthlyUpdatesType = [
 
 const emailRegex: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-const Left = () => {
-  const [email, setEmail] = useState("");
-  const [isError, setIsError] = useState(false);
+const Left = ({ email, setEmail, isError, setIsError }: leftProps) => {
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

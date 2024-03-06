@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import successIcon from "../assets/images/icon-success.svg";
 
-const Success = () => {
+type successProps = {
+  email: string;
+};
+
+const Success = ({ email }: successProps) => {
   const navigate = useNavigate();
 
   return (
@@ -12,8 +16,8 @@ const Success = () => {
       </h1>
       <p className="text-sm">
         A confirmation email has been sent to{" "}
-        <span className="font-bold">ash@lorencompany.com</span>. Please open it
-        and click the button inside to confirm your subscription.
+        <span className="font-bold">{email}</span>. Please open it and click the
+        button inside to confirm your subscription.
       </p>
       <button
         onClick={() => navigate("/")}
